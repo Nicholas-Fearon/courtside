@@ -1,5 +1,7 @@
 export default function LeagueTable() {
     return (<>
+    <h2>League Table</h2>
+    <div>
     <table>
     <thead>
         <tr>
@@ -105,5 +107,6 @@ export default function LeagueTable() {
         </tr>
     </tbody>
 </table>
+</div>
     </>)
 }

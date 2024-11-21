@@ -8,7 +8,7 @@ export default async function Teams() {
   return (
     <>
       <h2>Teams</h2>
-      <p>Will render all teams here</p>
+      
 
       {teams.map((team) => {
         return (

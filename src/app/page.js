@@ -1,16 +1,20 @@
-import Image from "next/image";
+const { db } = require("@/utils/db");
 import LeagueTable from "@/components/Table";
-export default function HomePage() {
+
+export default async function HomePage() {
+  const result = await db.query(`SELECT * FROM fan_message`);
+  const messages = result.rows;
+  console.log(messages);
   return (
     <>
       <LeagueTable />
-
-      <Image
-        src={`/nba.png`}
-        width={100}
-        height={250}
-        alt="Picture of the NBA Logo"
-        />
+      <h2>Fan Messages</h2>
+      {messages.map((message) => (
+        <div key={message.id}>
+          <h3>{message.name}</h3>
+          <p>{message.message}</p>
+        </div>
+      ))}
     </>
   );
 }
