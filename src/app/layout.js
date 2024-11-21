@@ -22,12 +22,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-                <Link href={"/teams"}>Teams</Link>
-
-        <Link href={"/players"}>Players</Link>
+      <body>
+      
+       
         {children}
       </body>
     </html>

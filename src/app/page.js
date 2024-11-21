@@ -1,8 +1,8 @@
 import Image from "next/image";
-export default function App() {
+export default function HomePage() {
   return (
     <>
-      <h2 className="text-sky-400">Hello</h2>
+      
 
       <Image
         src={`/nba.png`}
