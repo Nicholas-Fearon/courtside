@@ -1,8 +1,9 @@
 import Image from "next/image";
+import LeagueTable from "@/components/Table";
 export default function HomePage() {
   return (
     <>
-      
+      <LeagueTable />
 
       <Image
         src={`/nba.png`}
