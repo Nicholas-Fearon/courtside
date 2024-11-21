@@ -1,7 +1,7 @@
 import { db } from "@/utils/db";
 
 export default async function Player({ params }) {
-  const { player } = params;
+  const { player } = await params;
 
   //  using parameterised query again for player ID
   const result = await db.query(
