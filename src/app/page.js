@@ -1,4 +1,4 @@
-const { db } = require("@/utils/db");
+import { db } from "@/utils/db";
 import LeagueTable from "@/components/Table";
 
 export default async function HomePage() {
