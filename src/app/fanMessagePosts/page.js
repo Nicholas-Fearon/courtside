@@ -8,7 +8,7 @@ export default function FormPage() {
     const name = formData.get("name");
     const message = formData.get("message");
 
-    await db.query(`INSERT INTO fan_message (name, message) VALUES ($1, $2)`, [
+    await db.query(`INSERT INTO league_message (name, message) VALUES ($1, $2)`, [
       name,
       message,
     ]);
@@ -19,7 +19,7 @@ export default function FormPage() {
   return (
     <>
     <div>
-      <h2>Add New Message</h2>
+      <h2>Add New Fan Message</h2>
       <form action={handleAddReport}>
         <label>Name</label>
         <input name="name" placeholder="Name" />

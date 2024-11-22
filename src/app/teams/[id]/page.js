@@ -16,7 +16,11 @@ export default async function TeamRoster({params}) {
 
     const players = result.rows;
    console.log("players sql:",players)
-    
+
+   //sql request for posts
+   const posts = await db.query(`SELECT * FROM team_msg ORDER BY created_at`)
+    const msg = posts.rows;
+    console.log("new msg:", msg)
     return (<>
 
         <h2>Team Roster</h2>
@@ -31,5 +35,17 @@ export default async function TeamRoster({params}) {
         ) : (
           <p>No players found for this team.</p>
         )}
+
+
+
+        <Link href={"/teamMessagePosts"}>Make a New Team Post</Link>
+        
+        {msg.map((message) => (
+          <div key={message.id}>
+            <h3>{message.name}</h3>
+            <p>{message.message}</p>
+          </div>
+        ))}
+
       </>)
 }

@@ -1,5 +1,6 @@
 import { db } from "@/utils/db";
 import LeagueTable from "@/components/Table";
+import Link from "next/link";
 
 export default async function HomePage() {
   const result = await db.query(`SELECT * FROM league_message ORDER BY created_at`);
@@ -20,6 +21,7 @@ export default async function HomePage() {
   return (
     <>
       <LeagueTable />
+      <Link href={"/fanMessagePosts"}>Post a Fan Message</Link>
       <h2>League Fan Messages</h2>
       {messages.map((message) => (
         <div key={message.id}>
