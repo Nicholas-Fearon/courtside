@@ -15,9 +15,10 @@ export default async function TeamRoster({params}) {
     [id]);
 
     const players = result.rows;
-   
+   console.log("players sql:",players)
     
     return (<>
+
         <h2>Team Roster</h2>
         {players.length ? (
           players.map((player) => (
