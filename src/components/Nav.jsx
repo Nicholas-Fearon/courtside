@@ -6,7 +6,6 @@ export default function Nav() {
         <>
         <Link href={"/"}>Home</Link>
         <Link href={"/teams"}>Teams</Link>
-        <Link href={"/players"}>Players</Link>
         <Link href={"/posts"}>Post Form</Link>
         
         </>

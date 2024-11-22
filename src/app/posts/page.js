@@ -29,6 +29,7 @@ export default function FormPage() {
 
         <button>Add message</button>
       </form>
+      
     </div>
 
 

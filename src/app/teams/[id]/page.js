@@ -25,7 +25,6 @@ export default async function TeamRoster({params}) {
             <Link key={player.player_id} href={`/teams/${id}/${player.player_id}`}>
               <div>
                 <h3>{player.player_name}</h3>
-                <p>Position: {player.position}</p>
               </div>
             </Link>
           ))
