@@ -17,6 +17,7 @@ export default function FormPage() {
   }
 
   return (
+    <>
     <div>
       <h2>Add New Message</h2>
       <form action={handleAddReport}>
@@ -29,5 +30,10 @@ export default function FormPage() {
         <button>Add message</button>
       </form>
     </div>
+
+
+
+
+    </>
   );
 }
