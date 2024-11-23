@@ -1,51 +1,58 @@
 import { db } from "@/utils/db";
 import Link from "next/link";
 
-export default async function TeamRoster({params}) {
-    
-    const id = (await params).id;
-    console.log("single team param: ",id)
+export default async function TeamRoster({ params }) {
+  const id = (await params).id;
 
-    const result = await db.query(`SELECT 
+  // SQL request for players on the team
+  const playerResult = await db.query(
+    `SELECT 
       players.id AS player_id,
       players.name AS player_name,
       players.position
     FROM players
     WHERE players.team_id = $1`,
-    [id]);
+    [id]
+  );
 
-    const players = result.rows;
-   console.log("players sql:",players)
+  const players = playerResult.rows;
 
-   //sql request for posts
-   const posts = await db.query(`SELECT * FROM team_msg ORDER BY created_at`)
-    const msg = posts.rows;
-    console.log("new msg:", msg)
-    return (<>
+  // SQL request for posts specific to this team
+  const postResult = await db.query(
+    `SELECT * FROM team_msg WHERE team_id = $1 ORDER BY created_at`,
+    [id]
+  );
 
-        <h2>Team Roster</h2>
-        {players.length ? (
-          players.map((player) => (
-            <Link key={player.player_id} href={`/teams/${id}/${player.player_id}`}>
-              <div>
-                <h3>{player.player_name}</h3>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <p>No players found for this team.</p>
-        )}
+  const messages = postResult.rows;
 
+  return (
+    <>
+      <h2>Team Roster</h2>
+      {players.length ? (
+        players.map((player) => (
+          <Link key={player.player_id} href={`/teams/${id}/${player.player_id}`}>
+            <div>
+              <h3>{player.player_name}</h3>
+            </div>
+          </Link>
+        ))
+      ) : (
+        <p>No players found for this team.</p>
+      )}
 
+      <Link href={`/teamMessagePosts?team_id=${id}`}>Make a New Team Post</Link>
 
-        <Link href={"/teamMessagePosts"}>Make a New Team Post</Link>
-        
-        {msg.map((message) => (
+      <h2>Team Messages</h2>
+      {messages.length ? (
+        messages.map((message) => (
           <div key={message.id}>
             <h3>{message.name}</h3>
             <p>{message.message}</p>
           </div>
-        ))}
-
-      </>)
+        ))
+      ) : (
+        <p>No messages for this team.</p>
+      )}
+    </>
+  );
 }
