@@ -5,3 +5,4 @@ https://nextjs.org/docs/app/building-your-application/configuring/environment-va
 
 
 added favicon
+had issue with delete button

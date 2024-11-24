@@ -1,3 +1,5 @@
+import config from './postcss.config.mjs';
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [

@@ -28,9 +28,13 @@ export default async function TeamRoster({ params }) {
   return (
     <>
       <h2>Team Roster</h2>
+
       {players.length ? (
         players.map((player) => (
-          <Link key={player.player_id} href={`/teams/${id}/${player.player_id}`}>
+          <Link
+            key={player.player_id}
+            href={`/teams/${id}/${player.player_id}`}
+          >
             <div>
               <h3>{player.player_name}</h3>
             </div>
