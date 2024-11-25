@@ -29,10 +29,11 @@ export default async function HomePage() {
 
   return (
     <>
-      <div>
+      <div className="container">
         <LeagueTable />
-        <Link href={"/fanMessagePosts"}>Post a Fan Message</Link>
+
         <h2>League Fan Messages</h2>
+        <Link href={"/fanMessagePosts"}>Post a Fan Message</Link>
         {messages.map((message) => (
           <div key={message.id}>
             <h3>{message.name}</h3>
