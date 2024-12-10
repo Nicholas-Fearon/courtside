@@ -1,7 +1,7 @@
 export default function LeagueTable() {
   return (
     <div className="container mx-auto mb-4">
-      <h2 className="mb-4 text-xl font-bold text-center">League Table</h2>
+      <h2 className="mb-4 text-xl font-bold text-center underline">League Table</h2>
       <div>
         <table className=" mx-auto border-seperate border text-center border-slate-500 table-fixed">
           <thead>

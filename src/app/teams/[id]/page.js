@@ -1,6 +1,6 @@
 import { db } from "@/utils/db";
 import Link from "next/link";
-
+import { notFound } from "next/navigation";
 export default async function TeamRoster({ params }) {
   const id = (await params).id;
 
@@ -43,6 +43,10 @@ export default async function TeamRoster({ params }) {
       ) : (
         <p>No players found for this team.</p>
       )}
+
+if (!messages) {
+        notFound()
+    }
 
       <Link href={`/teamMessagePosts?team_id=${id}`}>Make a New Team Post</Link>
 
